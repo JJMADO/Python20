@@ -1,5 +1,5 @@
 from tkinter import  *
-
+import tkinter.messagebox
 def clik(btn):
     if '='  in ex.cget("text"):
         ex.config(text="")
@@ -20,9 +20,12 @@ def clik(btn):
             else:
                 ex.config(text = ex.cget("text")[:-1] + btn)
     elif btn in "=":
-        ex.config(text = ex.cget("text")+ vvod.get() + btn )
-        vvod.delete(0,END)
-        vvod.insert(END,str(eval(ex.cget("text")[:-1])))
+        try:
+            ex.config(text = ex.cget("text")+ vvod.get() + btn )
+            vvod.delete(0,END)
+            vvod.insert(END,str(eval(ex.cget("text")[:-1])))
+        except:
+            tkinter.messagebox.showerror("Ошибка")
 
 
 komar = Tk()
